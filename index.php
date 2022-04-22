@@ -15,6 +15,7 @@ Your browser does not support the HTML5 canvas tag.</canvas>
 <button onclick="myVar = setTimeout(titikpusat, 1000)">titikpusattengah</button>
 <button onclick="myVar = setTimeout(line, 1000)">garis</button>
 <button onclick="myVar = setTimeout(linehor, 1000)">line horizontal kartesian</button>
+<button onclick="myVar = setTimeout(linemodif, 1000)">garis koordinat kartesian</button>
 <p id="demo"></p>
 
 <form id="frm1" action="/action_page.php">
@@ -55,7 +56,7 @@ for (var i=0;i<imgData.data.length;i+=4)
   imgData.data[i+2]=255;
   imgData.data[i+3]=255;
   }
-ctx.putImageData(imgData,width+100,height-100);
+ctx.putImageData(imgData,width,height);
 }
 
 function linehor()
@@ -93,11 +94,34 @@ if (canvas.getContext)
   var context = canvas.getContext('2d');
   context.beginPath(); 
    context.moveTo(10,45);
-  context.lineTo(180,47);
+  context.lineTo(180,60);
   context.stroke();
    }
 
 }
+
+
+function linemodif()
+{
+
+var canvas = document.getElementById('myCanvas');
+var width = (canvas.scrollWidth)/2;
+var height = (canvas.scrollHeight)/2;
+console.log("ini isi dari width = "+width);
+console.log("ini isi dari height = "+height);
+if (canvas.getContext) 
+ {
+  var context = canvas.getContext('2d');
+  context.beginPath(); 
+  //mendefinisikan titik awal dari garis di mulai dari koordinat berapa
+  context.moveTo(width+25,height-25);
+  //mendefinisikan titik akhir dari garis sampai koordinat berapa
+  context.lineTo(width+100,height-50);
+  context.stroke();
+   }
+
+}
+
 </script>
 
 </body>
